@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto+Mono&display=swap");
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #D7D7D7 #DFE9EB;
+  }
+
+  *::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #DFE9EB;
+  }
+  
+  *::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+  }
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #D7D7D7;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #A3A3A3;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #A3A3A3;
+  }
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('img/background3.png');
+  background-size: cover;
+}
+
+.container {
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.349);
+
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+.titulo {
+  font-family: "Roboto Mono", monospace;
+  color: floralwhite;
+
+}
+
+label {
+  display: block;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  padding-left: 20px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 6px;
+  box-sizing: border-box;
+  background:  rgba(255, 255, 255, 0.349);
+  font-family: Inter, Arial;
+  color: white;
+}
+
+.input::placeholder{
+  color: white;
+}
+
+.input_button_container {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  grid-gap: 6px;
+  margin-bottom: 10px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  color: #513073;
+  background: #f2ecfb;
+}
+
+.cadastrar-btn {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.buscar-btn {
+  background-color: #3498db;
+  color: #fff;
+}
+
+button:hover {
+  background-color: rgb(221, 194, 221);
+}
+
+.input_button_container > button:active {
+  background-color: #e0c9ff;
+}
+
+.delete {
+  margin-left: auto;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: rgb(148, 6, 6);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:active,
+.delete:active {
+  background-color: #555;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.list_item li {
+  font-family: "Inter", sans-serif;
+}
+
+.list_item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffffab;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  margin-right: 5px;
+  color: floralwhite;
+}
+
+.list_item label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list_item input.checkbox {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.list_item input[type="checkbox"]:checked + li {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+

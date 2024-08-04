@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="config.js"></script>
+    <link rel="icon" href="icon/lista-de-tarefas.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Projeto Pomodoro</title>
+  </head>
+
+  <body>
+    <div class="container">
+    <h1 class="titulo tarefas">Tarefas</h1>
+
+    <div class="cadastro">
+      <form action="cadastrar_tarefa.php" method="post" class="form">
+        <div class="input_button_container">
+        <input
+          autofocus
+          type="text"
+          name="nome_da_tarefa"
+          placeholder="Nome da tarefa..."
+          required
+          class="input"
+        />
+        <button type="submit" class="button">Cadastrar</button>
+      </div>
+      </form>
+    </div>
+
+    <div class="busca">
+      <form id="formBusca" onsubmit="submitForm()" class="form">
+        <div class="input_button_container">
+        <input
+          type="text"
+          id="termo_busca"
+          name="termo_busca"
+          placeholder="Pesquisar tarefas..."
+          required
+        class="input"/>
+        <button type="button" value="Buscar" onclick="realizarBusca()" class="button">
+          Pesquisar
+        </button>
+      </div>
+      </form>
+    </div>
+
+    <div>
+      <h2 class="titulo lista">Lista de Tarefas</h2>
+      <form action="deletar_tarefa.php" method="post" class="">
+        <input type="hidden" name="id" value="" id="id_input" />
+      </form>
+      <div id="conteudo" class="conteudo"></div>
+    </div>
+  </div>
+
+    <script>
+      function submitForm(e) {
+        e.preventDefault();
+      }
+
+      function realizarBusca() {
+        var termoBusca = $("#termo_busca").val();
+
+        $.ajax({
+          type: "GET",
+          url: "listar_tarefas.php",
+          data: { termo_busca: termoBusca },
+          success: function (data) {
+            $("#conteudo").html(data);
+          },
+          error: function (xhr, status, error) {
+            console.error("Erro na requisição AJAX: " + error);
+          },
+        });
+      }
+
+      $("#termo_busca").on("keydown", function (event) {
+        if (event.key === "Enter") {
+          realizarBusca();
+        }
+      });
+
+      $(document).ready(function () {
+        $("#conteudo").load("listar_tarefas.php");
+      });
+    </script>
+  
+  </body>
+</html>
